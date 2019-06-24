@@ -12,25 +12,24 @@ export default class BarChartComponent extends Component
        }
   }
   componentDidMount() {
-    axios.get(`http://localhost:4000/evaluations`)
+    axios.get(`http://localhost:4000/evaluations-by-question`)
       .then(res => {
         console.log('res', res)
-        const evaluations = res.data.evaluationArray;
+        const evaluations = res.data.passedPerQuestion;
         console.log('evaluations:', evaluations)
-        let studentName = [];
-        let questionKey = [];
+        let questionId = [];        
+        let studentsPassed = [];
         evaluations.map(element => {
-          console.log('element.fulfillmentValue.student.gitName', element.fulfillmentValue[0].student.gitName)
-          studentName.push(element.fulfillmentValue[0].student.gitName);
-          questionKey.push(element.fulfillmentValue[0].question.key[1]);
+          questionId.push(element.questionId);
+          studentsPassed.push(element.studentsPassed);
         });
         this.setState({ 
           Data: {
-            labels: questionKey,
+            labels: questionId,
             datasets:[
                {
-                  label:'Number of passed tests per student',
-                  data: [3,5,6,8,1,3,5,6] ,
+                  label:'Number of passed students per question',
+                  data: studentsPassed ,
                   backgroundColor:[
                    'rgba(255,105,145,0.6)',
                    'rgba(155,100,210,0.6)',
