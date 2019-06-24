@@ -17,15 +17,15 @@ export default class BarChartComponent extends Component
         console.log('res', res)
         const evaluations = res.data.passedPerQuestion;
         console.log('evaluations:', evaluations)
-        let questionId = [];        
+        let questionKey = [];        
         let studentsPassed = [];
         evaluations.map(element => {
-          questionId.push(element.questionId);
+          questionKey.push(element.questionKey);
           studentsPassed.push(element.studentsPassed);
         });
         this.setState({ 
           Data: {
-            labels: questionId,
+            labels: questionKey,
             datasets:[
                {
                   label:'Number of passed students per question',
