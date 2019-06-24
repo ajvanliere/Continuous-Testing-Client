@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 import Home from './components/Home';
+import BarChartComponent from './components/BarChartComponent'
+
 
 
 class App extends Component {
@@ -12,9 +14,11 @@ class App extends Component {
     return (
       <Provider store={store}>
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
         <Route path="/" exact component={Home} />
-        </header>
+        <h1>BarChart</h1>
+        <BarChartComponent/>
+        </div>
       </div>
       </Provider>
     );
