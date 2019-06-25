@@ -12,8 +12,8 @@ class StudentsChart extends Component {
       }
   }
 
-  componentDidMount() {
-     axios.get(`http://localhost:4000/evaluations-by-student`)
+  getStudentsData = () => {
+    return axios.get(`http://localhost:4000/evaluations-by-student`)
        .then(res => {
          console.log('students response', res)
          const evaluations = res.data.passedPerStudent;
@@ -45,6 +45,11 @@ class StudentsChart extends Component {
           }
           });
        })
+  }
+  componentDidMount() {
+    this.getStudentsData()
+    //makes another request to the server every minute
+    setInterval(this.getStudentsData, 60000)
    }
     render()
     {
