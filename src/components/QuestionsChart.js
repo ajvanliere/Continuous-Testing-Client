@@ -4,8 +4,7 @@ import axios from 'axios'
 
 
 
-export default class QuestionsChart extends Component
-{
+export default class QuestionsChart extends Component {
    constructor(props) {
       super(props);
       this.state ={
@@ -16,14 +15,15 @@ export default class QuestionsChart extends Component
   getQuestionsData = () => {
      return axios.get(`http://localhost:4000/evaluations-by-question`)
      .then(res => {
-       console.log('res', res)
+       console.log('questions response', res)
        const evaluations = res.data.passedPerQuestion;
-       console.log('evaluations:', evaluations)
+       console.log('questions evaluations:', evaluations)
        let questionKey = [];        
        let studentsPassed = [];
        evaluations.map(element => {
          questionKey.push(element.questionKey);
          studentsPassed.push(element.studentsPassed);
+         return null
        });
        this.setState({ 
          Data: {
@@ -49,41 +49,10 @@ export default class QuestionsChart extends Component
 
   componentDidMount() {
      this.getQuestionsData()
-   //   setInterval(this.getQuestionsData(), 3000)
-
-   // setInterval( () => axios.get(`http://localhost:4000/evaluations-by-question`)
-   // .then(res => {
-   //   console.log('res', res)
-   //   const evaluations = res.data.passedPerQuestion;
-   //   console.log('evaluations:', evaluations)
-   //   let questionKey = [];        
-   //   let studentsPassed = [];
-   //   evaluations.map(element => {
-   //     questionKey.push(element.questionKey);
-   //     studentsPassed.push(element.studentsPassed);
-   //   });
-   //   this.setState({ 
-   //     Data: {
-   //       labels: questionKey,
-   //       datasets:[
-   //          {
-   //             label:'Number of passed students per question',
-   //             data: studentsPassed ,
-   //             backgroundColor:[
-   //              'rgba(255,105,145,0.6)',
-   //              'rgba(155,100,210,0.6)',
-   //              'rgba(90,178,255,0.6)',
-   //              'rgba(240,134,67,0.6)',
-   //              'rgba(120,120,120,0.6)',
-   //              'rgba(250,55,197,0.6)'
-   //           ]
-   //          }
-   //       ]
-   //    }
-   //    });
-   // }) ,60000)
-    
+     //makes another request to the server every minute
+     setInterval(this.getQuestionsData, 60000)
   }
+  
    render()
    {
       return(
