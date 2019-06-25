@@ -8,20 +8,22 @@ class StudentsChart extends Component {
   constructor(props) {
       super(props);
       this.state ={
+        Data:{}
       }
   }
 
-  componentDidMount() {
-     axios.get(`http://localhost:4000/evaluations-by-student`)
+  getStudentsData = () => {
+    return axios.get(`http://localhost:4000/evaluations-by-student`)
        .then(res => {
-         console.log('res', res)
+         console.log('students response', res)
          const evaluations = res.data.passedPerStudent;
-         console.log('evaluations:', evaluations)
+         console.log('students evaluations:', evaluations)
          let studentName = [];        
          let questionsPassed = [];
          evaluations.map(element => {
           studentName.push(element.studentName);
-           questionsPassed.push(element.questionsPassed);
+          questionsPassed.push(element.questionsPassed);
+          return null
          });
          this.setState({ 
            Data: {
@@ -43,6 +45,11 @@ class StudentsChart extends Component {
           }
           });
        })
+  }
+  componentDidMount() {
+    this.getStudentsData()
+    //makes another request to the server every 30 seconds
+    setInterval(this.getStudentsData, 30000)
    }
     render()
     {

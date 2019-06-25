@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router-dom';
 import './App.css';
 
 import QuestionsChart from './components/QuestionsChart'
@@ -16,7 +15,7 @@ class App extends Component {
       <div className="App">
         <h1>BarChart</h1>
         <div className="Charts">
-        <QuestionsChart/>
+        <QuestionsChart />
         <StudentsChart />
         </div>
       </div>
