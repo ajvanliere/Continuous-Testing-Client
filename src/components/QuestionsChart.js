@@ -49,10 +49,10 @@ export default class QuestionsChart extends Component {
 
   componentDidMount() {
      this.getQuestionsData()
-     //makes another request to the server every minute
-     setInterval(this.getQuestionsData, 60000)
+     //makes another request to the server every 30 seconds
+     setInterval(this.getQuestionsData, 30000)
   }
-  
+
    render()
    {
       return(
