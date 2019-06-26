@@ -18,10 +18,18 @@ class App extends Component {
       <div className="App">
         <h1>Student's Progress</h1>
         <div className="Charts">
-        <QuestionsChart />
-        <StudentsChart />
+        <div className='question'>
+          <QuestionsChart />
+        </div>
+        <div className='student'>
+          <StudentsChart />
+        </div>
+        <div className='question-pie'>
         <QuestionsPieChart />
+        </div>
+        <div className='student-stack'>
         <StudentsStackedChart/>
+        </div>
         </div>
       </div>
       </Provider>
