@@ -53,7 +53,7 @@ export default class QuestionsPieChart extends Component {
             title: {
               display: true,
               text: '% of questions passed by students',
-              fontSize: 25
+              fontSize: 35
             },
             legend: {
               display: true,
@@ -63,7 +63,7 @@ export default class QuestionsPieChart extends Component {
               callbacks: {
               label: function(tootipItem, data) {
                 const dataItem = data.datasets[tootipItem.datasetIndex].data[tootipItem.index] || '';
-                return `${Math.round(dataItem)} %`;
+                return ` ${Math.round(dataItem)}%`;
               }
             } 
             },
