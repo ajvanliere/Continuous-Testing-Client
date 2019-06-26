@@ -38,10 +38,10 @@ export default class QuestionsChart extends Component {
                  backgroundColor:[
                   'rgba(255,105,145,0.6)',
                   'rgba(155,100,210,0.6)',
+                  'rgba(77, 228, 205, 0.6)',
                   'rgba(90,178,255,0.6)',
                   'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
+                  'rgba(228, 77, 77, 0.6)'
                ]
               }
            ]
