@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
-import ChartDataLabels from 'chartjs-plugin-datalabels' 
-Chart.plugins.unregister(ChartDataLabels);
 
 
 export default class QuestionsPieChart extends Component {
