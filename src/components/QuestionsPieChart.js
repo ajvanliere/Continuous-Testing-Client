@@ -9,37 +9,43 @@ export default class QuestionsPieChart extends Component {
       Data:{}
     }
   }
-  componentDidMount() {
-    axios.get(`http://localhost:4000/evaluations-by-question-student`)
-      .then(res => {
-        let questions = res.data.questions
-        let students = res.data.students
-        let totalPassed = res.data.questionsPassed
-        let maxPassed = questions * students
-        let totalFailed = maxPassed - totalPassed
-        let pctQuestionsPassed = totalPassed / maxPassed * 100
-        let pctQuestionsFailed = totalFailed / maxPassed * 100
 
-        
-        this.setState({
-          Data: {
-            labels: ['Questions Passed', 'Questions failed'],
-            datasets: [
-              {
-                data: [ pctQuestionsPassed, pctQuestionsFailed],
-                backgroundColor: [
-                  'rgba(255,105,145,0.6)',
-                  'rgba(155,100,210,0.6)',
-                  'rgba(90,178,255,0.6)',
-                  'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
-                ]
-              }
-            ]
-          }
-        });
-      })
+  getQuestionsStudantsData = () => {
+    axios.get(`http://localhost:4000/evaluations-by-question-student`)
+    .then(res => {
+      let questions = res.data.questions
+      let students = res.data.students
+      let totalPassed = res.data.questionsPassed
+      let maxPassed = questions * students
+      let totalFailed = maxPassed - totalPassed
+      let pctQuestionsPassed = totalPassed / maxPassed * 100
+      let pctQuestionsFailed = totalFailed / maxPassed * 100
+
+      
+      this.setState({
+        Data: {
+          labels: ['Questions Passed', 'Questions failed'],
+          datasets: [
+            {
+              data: [ pctQuestionsPassed, pctQuestionsFailed],
+              backgroundColor: [
+                'rgba(255,105,145,0.6)',
+                'rgba(155,100,210,0.6)',
+                'rgba(90,178,255,0.6)',
+                'rgba(240,134,67,0.6)',
+                'rgba(120,120,120,0.6)',
+                'rgba(250,55,197,0.6)'
+              ]
+            }
+          ]
+        }
+      });
+    })
+  }
+  componentDidMount() {
+    this.getQuestionsStudantsData()
+     //makes another request to the server every 10 seconds
+     setInterval(this.getQuestionsStudantsData, 10000)
   }
   render() {
     return (

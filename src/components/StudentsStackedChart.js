@@ -15,7 +15,6 @@ class StudentsStackedChart extends Component {
   getStudentsData = () => {
     return axios.get(`http://localhost:4000/stack-evaluations-by-student`)
        .then(res => {
-         // console.log('res', res)
          const evaluations = res.data.attemptedPerStudent;
         // console.log('evaluations:', evaluations)
          // console.log('students response', res)
@@ -50,8 +49,8 @@ class StudentsStackedChart extends Component {
   }
   componentDidMount() {
     this.getStudentsData()
-    //makes another request to the server every 30 seconds
-    setInterval(this.getStudentsData, 30000)
+    //makes another request to the server every 10 seconds
+    setInterval(this.getStudentsData, 10000)
    }
     render()
     {
