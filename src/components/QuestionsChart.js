@@ -64,8 +64,8 @@ export default class QuestionsChart extends Component {
           options={{
             title: {
               display: true,
-              text: 'No. of students that passed each question',
-              fontSize: 30
+              text: ['No. of students', 'passing each question'],
+              fontSize: 20
             },
             legend: {
               display: false,
