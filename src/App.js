@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <h1>Student's Progress</h1>
         <div className="Charts">
-        <QuestionsChart/>
+        <QuestionsChart />
         <StudentsChart />
         <QuestionsPieChart />
         </div>
