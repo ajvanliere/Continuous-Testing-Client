@@ -20,7 +20,6 @@ export default class QuestionsPieChart extends Component {
       let totalFailed = maxPassed - totalPassed
       let pctQuestionsPassed = totalPassed / maxPassed * 100
       let pctQuestionsFailed = totalFailed / maxPassed * 100
-
       
       this.setState({
         Data: {
@@ -46,20 +45,22 @@ export default class QuestionsPieChart extends Component {
     this.getQuestionsStudantsData()
      //makes another request to the server every 10 seconds
      setInterval(this.getQuestionsStudantsData, 10000)
+
   }
   render() {
     return (
       <div>
         <Pie
-          type= 'pie'
+          type='pie'
           data={this.state.Data}
-          height = {350}
-          width = {350}
+          height={350}
+          width={350}
           options={{
             title: {
               display: true,
               text: '% of questions passed by students',
-              fontSize: 35
+
+              fontSize: 30
             },
             legend: {
               display: true,
@@ -73,6 +74,7 @@ export default class QuestionsPieChart extends Component {
                   return `${Math.round(dataItem)} %`;
                 }
               } 
+
             },
             maintainAspectRatio: false,
             layout: {

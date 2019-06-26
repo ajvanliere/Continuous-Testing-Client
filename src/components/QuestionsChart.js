@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import {HorizontalBar} from 'react-chartjs-2';
-import axios from 'axios'
-
-
+import { HorizontalBar } from 'react-chartjs-2';
+import axios from 'axios';
 
 export default class QuestionsChart extends Component {
-   constructor(props) {
-      super(props);
-      this.state ={
-         Data:{}
-       }
+  constructor(props) {
+    super(props);
+    this.state = {
+      Data: {}
+    }
   }
 
   getQuestionsData = () => {
@@ -28,14 +26,14 @@ export default class QuestionsChart extends Component {
          
          return null
        });
-       this.setState({ 
-         Data: {
-           labels: questionKey,
-           datasets:[
+        this.setState({
+          Data: {
+            labels: questionKey,
+            datasets: [
               {
-                 label: questionLabel,
-                 data: studentsPassed ,
-                 backgroundColor:[
+                label: questionLabel,
+                data: studentsPassed,
+                backgroundColor: [
                   'rgba(255,105,145,0.6)',
                   'rgba(155,100,210,0.6)',
                   'rgba(77, 228, 205, 0.6)',
@@ -44,79 +42,80 @@ export default class QuestionsChart extends Component {
                   'rgba(228, 77, 77, 0.6)'
                ]
               }
-           ]
-        }
+            ]
+          }
         });
       })
   }
 
   componentDidMount() {
-     this.getQuestionsData()
-     //makes another request to the server every 10 seconds
-     setInterval(this.getQuestionsData, 10000)
+    this.getQuestionsData()
+    //makes another request to the server every 10 seconds
+    setInterval(this.getQuestionsData, 10000)
   }
 
-   render()
-   {
-      return(
-         <div>
-            <HorizontalBar  
-            data = {this.state.Data}
-            width = {500}
-            height = {500}
-            options = {{
-               title: {
-                 display: true,
-                 text: 'No. of students that passed each question',
-                 fontSize:25
-               },
-               legend: {
-                 display: false,
-                 position: 'bottom', 
-               },
-               tooltips: {
-                  callbacks: {
-                  label: function(tooltipItem, data) {
-                    const dataItem = data.datasets[tooltipItem.datasetIndex].label[tooltipItem.index].split(':')[0].split(']')[1] || '';
-                    return dataItem;
-                  }
-               }
+  render() {
+    return (
+      <div>
+        <HorizontalBar
+          data={this.state.Data}
+          width={500}
+          height={500}
+          options={{
+            title: {
+              display: true,
+              text: 'No. of students that passed each question',
+              fontSize: 30
             },
-               maintainAspectRatio: true,
-               scales: {
-                  xAxes: [{
-                     scaleLabel: {
-                        display: true,
-                        labelString: 'Number of students'
-                      },
-                      ticks: {
-                          beginAtZero: true,
-                          userCallback: function(label, index, labels) {
-                              // when the floored value is the same as the value we have a whole number
-                              if (Math.floor(label) === label) {
-                                  return label;
-                              }
-          
-                          },
-                      }
-                  }],
-                  yAxes: [{
-                     scaleLabel: {
-                        display: true,
-                        labelString: 'Question key'
-                      }
-                  }],
-              },
-               layout: {
-                  padding:{
-                     top: 0,
-                     bottom: 0,
-                     right: 0,
-                     left: 50
-                  }
-               }
-               }} />
-         </div>
-      )
-   }
+            legend: {
+              display: false,
+              position: 'bottom',
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItem, data) {
+                  const dataItem = data.datasets[tooltipItem.datasetIndex].label[tooltipItem.index].split(':')[0].split(']')[1] || '';
+                  return dataItem;
+                }
+              }
+            },
+            maintainAspectRatio: true,
+            scales: {
+              xAxes: [{
+                scaleLabel: {
+                  fontSize: 20,
+                  display: true,
+                  labelString: 'Number of students'
+                },
+                ticks: {
+                  beginAtZero: true,
+                  userCallback: function (label, index, labels) {
+                    // when the floored value is the same as the value we have a whole number
+                    if (Math.floor(label) === label) {
+                      return label;
+                    }
+
+                  },
+                }
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  fontSize: 20,
+                  display: true,
+                  labelString: 'Question key'
+                }
+              }],
+            },
+            layout: {
+              padding: {
+                top: 0,
+                bottom: 0,
+                right: 0,
+                left: 50
+              }
+            }
+          }} />
+      </div>
+    )
+  }
 }
