@@ -60,8 +60,8 @@ class StudentsStackedChart extends Component {
           options={{
             title: {
               display: true,
-              text: 'No. of passed and failed questions by student',
-              fontSize: 30
+              text: ['No. of passed and failed', 'questions by student'],
+              fontSize: 20
             },
             legend: {
               display: false,

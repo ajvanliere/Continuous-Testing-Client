@@ -58,9 +58,8 @@ export default class QuestionsPieChart extends Component {
           options={{
             title: {
               display: true,
-              text: '% of questions passed by students',
-
-              fontSize: 30
+              text: ['% of questions', 'passed by students'],
+              fontSize: 20
             },
             legend: {
               display: true,
