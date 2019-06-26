@@ -6,7 +6,7 @@ export default class QuestionsPieChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Data:{}
+      Data: {}
     }
   }
   componentDidMount() {
@@ -20,13 +20,13 @@ export default class QuestionsPieChart extends Component {
         let pctQuestionsPassed = totalPassed / maxPassed * 100
         let pctQuestionsFailed = totalFailed / maxPassed * 100
 
-        
+
         this.setState({
           Data: {
             labels: ['Questions Passed', 'Questions failed'],
             datasets: [
               {
-                data: [ pctQuestionsPassed, pctQuestionsFailed],
+                data: [pctQuestionsPassed, pctQuestionsFailed],
                 backgroundColor: [
                   'rgba(255,105,145,0.6)',
                   'rgba(155,100,210,0.6)',
@@ -45,15 +45,15 @@ export default class QuestionsPieChart extends Component {
     return (
       <div>
         <Pie
-          type= 'pie'
+          type='pie'
           data={this.state.Data}
-          height = {350}
-          width = {350}
+          height={350}
+          width={350}
           options={{
             title: {
               display: true,
               text: '% of questions passed by students',
-              fontSize: 35
+              fontSize: 30
             },
             legend: {
               display: true,
@@ -61,11 +61,11 @@ export default class QuestionsPieChart extends Component {
             },
             tooltips: {
               callbacks: {
-              label: function(tootipItem, data) {
-                const dataItem = data.datasets[tootipItem.datasetIndex].data[tootipItem.index] || '';
-                return ` ${Math.round(dataItem)}%`;
+                label: function (tootipItem, data) {
+                  const dataItem = data.datasets[tootipItem.datasetIndex].data[tootipItem.index] || '';
+                  return ` ${Math.round(dataItem)}%`;
+                }
               }
-            } 
             },
             maintainAspectRatio: false,
             layout: {
