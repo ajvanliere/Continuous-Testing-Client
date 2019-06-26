@@ -30,14 +30,14 @@ class StudentsChart extends Component {
               {
                 label: 'Passed questions',
                 data: questionsPassed,
-                backgroundColor: [
+                backgroundColor:[
                   'rgba(255,105,145,0.6)',
                   'rgba(155,100,210,0.6)',
+                  'rgba(77, 228, 205, 0.6)',
                   'rgba(90,178,255,0.6)',
                   'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
-                ]
+                  'rgba(213, 50, 80, 0.6)'
+               ]
               }
             ]
           }
@@ -46,9 +46,10 @@ class StudentsChart extends Component {
   }
   componentDidMount() {
     this.getStudentsData()
-    //makes another request to the server every 10 seconds
+    //makes another request to the server every 30 seconds
     setInterval(this.getStudentsData, 10000)
-  }
+   }
+
   render() {
     return (
       <div>

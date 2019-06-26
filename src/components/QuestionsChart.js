@@ -11,19 +11,21 @@ export default class QuestionsChart extends Component {
   }
 
   getQuestionsData = () => {
-    return axios.get(`http://localhost:4000/evaluations-by-question`)
-      .then(res => {
-        const evaluations = res.data.passedPerQuestion;
-        let questionKey = [];
-        let studentsPassed = [];
-        let questionLabel = [];
-        evaluations.map(element => {
-          questionKey.push(element.questionKey[1]);
-          studentsPassed.push(element.studentsPassed);
-          questionLabel.push(element.questionKey)
-
-          return null
-        });
+     return axios.get(`http://localhost:4000/evaluations-by-question`)
+     .then(res => {
+      // console.log('questions response', res)
+       const evaluations = res.data.passedPerQuestion;
+      // console.log('questions evaluations:', evaluations)
+       let questionKey = [];        
+       let studentsPassed = [];
+       let questionLabel = [];
+       evaluations.map(element => {
+         questionKey.push(element.questionKey[1]);
+         studentsPassed.push(element.studentsPassed);
+         questionLabel.push(element.questionKey)
+         
+         return null
+       });
         this.setState({
           Data: {
             labels: questionKey,
@@ -34,11 +36,11 @@ export default class QuestionsChart extends Component {
                 backgroundColor: [
                   'rgba(255,105,145,0.6)',
                   'rgba(155,100,210,0.6)',
+                  'rgba(77, 228, 205, 0.6)',
                   'rgba(90,178,255,0.6)',
                   'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
-                ]
+                  'rgba(213, 50, 80, 0.6)'
+               ]
               }
             ]
           }

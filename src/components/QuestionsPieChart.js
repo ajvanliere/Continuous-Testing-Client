@@ -6,40 +6,46 @@ export default class QuestionsPieChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Data: {}
+      Data:{}
     }
   }
-  componentDidMount() {
+
+  getQuestionsStudantsData = () => {
     axios.get(`http://localhost:4000/evaluations-by-question-student`)
-      .then(res => {
-        let questions = res.data.questions
-        let students = res.data.students
-        let totalPassed = res.data.questionsPassed
-        let maxPassed = questions * students
-        let totalFailed = maxPassed - totalPassed
-        let pctQuestionsPassed = totalPassed / maxPassed * 100
-        let pctQuestionsFailed = totalFailed / maxPassed * 100
+    .then(res => {
+      let questions = res.data.questions
+      let students = res.data.students
+      let totalPassed = res.data.questionsPassed
+      let maxPassed = questions * students
+      let totalFailed = maxPassed - totalPassed
+      let pctQuestionsPassed = totalPassed / maxPassed * 100
+      let pctQuestionsFailed = totalFailed / maxPassed * 100
+      
+      this.setState({
+        Data: {
+          labels: ['Questions Passed', 'Questions failed'],
+          datasets: [
+            {
+              data: [ pctQuestionsPassed, pctQuestionsFailed],
+              backgroundColor: [
+                'rgba(255,105,145,0.6)',
+                'rgba(155,100,210,0.6)',
+                'rgba(77, 228, 205, 0.6)',
+                'rgba(90,178,255,0.6)',
+                'rgba(240,134,67,0.6)',
+                'rgba(213, 50, 80, 0.6)'
+              ]
+            }
+          ]
+        }
+      });
+    })
+  }
+  componentDidMount() {
+    this.getQuestionsStudantsData()
+     //makes another request to the server every 10 seconds
+     setInterval(this.getQuestionsStudantsData, 10000)
 
-
-        this.setState({
-          Data: {
-            labels: ['Questions Passed', 'Questions failed'],
-            datasets: [
-              {
-                data: [pctQuestionsPassed, pctQuestionsFailed],
-                backgroundColor: [
-                  'rgba(255,105,145,0.6)',
-                  'rgba(155,100,210,0.6)',
-                  'rgba(90,178,255,0.6)',
-                  'rgba(240,134,67,0.6)',
-                  'rgba(120,120,120,0.6)',
-                  'rgba(250,55,197,0.6)'
-                ]
-              }
-            ]
-          }
-        });
-      })
   }
   render() {
     return (
@@ -53,19 +59,22 @@ export default class QuestionsPieChart extends Component {
             title: {
               display: true,
               text: '% of questions passed by students',
+
               fontSize: 30
             },
             legend: {
               display: true,
               position: 'bottom',
             },
+            
             tooltips: {
-              callbacks: {
-                label: function (tootipItem, data) {
+                callbacks: {
+                label: function(tootipItem, data) {
                   const dataItem = data.datasets[tootipItem.datasetIndex].data[tootipItem.index] || '';
-                  return ` ${Math.round(dataItem)}%`;
+                  return `${Math.round(dataItem)} %`;
                 }
-              }
+              } 
+
             },
             maintainAspectRatio: false,
             layout: {

@@ -4,7 +4,6 @@ import axios from 'axios';
 
 
 class StudentsStackedChart extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +23,7 @@ class StudentsStackedChart extends Component {
           questionsPassed.push(element.questionsPassed);
           questionsFailed.push(element.questionsFailed)
           return null
+
         });
         this.setState({
           Data: {
@@ -48,6 +48,7 @@ class StudentsStackedChart extends Component {
     this.getStudentsData()
     //makes another request to the server every 10 seconds
     setInterval(this.getStudentsData, 10000)
+
   }
   render() {
     return (
