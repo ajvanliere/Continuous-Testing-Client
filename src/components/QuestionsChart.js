@@ -15,14 +15,17 @@ export default class QuestionsChart extends Component {
   getQuestionsData = () => {
      return axios.get(`http://localhost:4000/evaluations-by-question`)
      .then(res => {
-       console.log('questions response', res)
+      // console.log('questions response', res)
        const evaluations = res.data.passedPerQuestion;
-       console.log('questions evaluations:', evaluations)
+      // console.log('questions evaluations:', evaluations)
        let questionKey = [];        
        let studentsPassed = [];
+       let questionLabel = [];
        evaluations.map(element => {
-         questionKey.push(element.questionKey);
+         questionKey.push(element.questionKey[1]);
          studentsPassed.push(element.studentsPassed);
+         questionLabel.push(element.questionKey)
+         
          return null
        });
        this.setState({ 
@@ -30,7 +33,7 @@ export default class QuestionsChart extends Component {
            labels: questionKey,
            datasets:[
               {
-                 label:'Number of passed students per question',
+                 label: questionLabel,
                  data: studentsPassed ,
                  backgroundColor:[
                   'rgba(255,105,145,0.6)',
@@ -71,6 +74,14 @@ export default class QuestionsChart extends Component {
                  display: false,
                  position: 'bottom', 
                },
+               tooltips: {
+                  callbacks: {
+                  label: function(tooltipItem, data) {
+                    const dataItem = data.datasets[tooltipItem.datasetIndex].label[tooltipItem.index].split(':')[0].split(']')[1] || '';
+                    return dataItem;
+                  }
+               }
+            },
                maintainAspectRatio: true,
                scales: {
                   xAxes: [{
