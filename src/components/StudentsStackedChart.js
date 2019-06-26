@@ -3,7 +3,7 @@ import {Bar} from 'react-chartjs-2';
 import axios from 'axios';
 
 
-class StudentsChart extends Component {
+class StudentsStackedChart extends Component {
   
   constructor(props) {
       super(props);
@@ -13,18 +13,20 @@ class StudentsChart extends Component {
   }
 
   getStudentsData = () => {
-    return axios.get(`http://localhost:4000/evaluations-by-student`)
+    return axios.get(`http://localhost:4000/stack-evaluations-by-student`)
        .then(res => {
          // console.log('res', res)
-         const evaluations = res.data.passedPerStudent;
-         // console.log('evaluations:', evaluations)
+         const evaluations = res.data.attemptedPerStudent;
+        // console.log('evaluations:', evaluations)
          // console.log('students response', res)
         // console.log('students evaluations:', evaluations)
          let studentName = [];        
          let questionsPassed = [];
+         let questionsFailed = [];
          evaluations.map(element => {
           studentName.push(element.studentName);
           questionsPassed.push(element.questionsPassed);
+          questionsFailed.push(element.questionsFailed)
           return null
          });
          this.setState({ 
@@ -34,15 +36,13 @@ class StudentsChart extends Component {
                 {
                    label:'Passed questions',
                    data: questionsPassed ,
-                   backgroundColor:[
-                    'rgba(255,105,145,0.6)',
-                    'rgba(155,100,210,0.6)',
-                    'rgba(90,178,255,0.6)',
-                    'rgba(240,134,67,0.6)',
-                    'rgba(120,120,120,0.6)',
-                    'rgba(250,55,197,0.6)'
-                 ]
-                }
+                   backgroundColor: 'rgba(90,178,255,0.6)'
+                },
+                {
+                  label:'Failed questions',
+                  data: questionsFailed ,
+                  backgroundColor: 'rgba(240,134,67,0.6)'
+               }
              ]
           }
           });
@@ -64,7 +64,7 @@ class StudentsChart extends Component {
              options = {{
                 title: {
                   display: true,
-                  text: 'No. of passed questions by student',
+                  text: 'No. of passed and failed questions by student',
                   fontSize:25
                 },
                 legend: {
@@ -74,6 +74,7 @@ class StudentsChart extends Component {
                 maintainAspectRatio: true,
                 scales: {
                   yAxes: [{
+                      stacked: true,
                       ticks: {
                           beginAtZero: true,
                           userCallback: function(label, index, labels) {
@@ -86,6 +87,7 @@ class StudentsChart extends Component {
                       }
                   }],
                   xAxes: [{
+                    stacked: true,
                     scaleLabel: {
                        display: true,
                        labelString: 'Student name'
@@ -107,4 +109,4 @@ class StudentsChart extends Component {
 }
 
 
-export default StudentsChart;
+export default StudentsStackedChart;

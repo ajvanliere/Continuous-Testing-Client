@@ -7,6 +7,7 @@ import './App.css';
 import QuestionsChart from './components/QuestionsChart'
 import StudentsChart from './components/StudentsChart'
 import QuestionsPieChart from './components/QuestionsPieChart'
+import StudentsStackedChart from './components/StudentsStackedChart'
 
 
 
@@ -20,6 +21,7 @@ class App extends Component {
         <QuestionsChart />
         <StudentsChart />
         <QuestionsPieChart />
+        <StudentsStackedChart/>
         </div>
       </div>
       </Provider>

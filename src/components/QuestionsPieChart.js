@@ -6,6 +6,7 @@ export default class QuestionsPieChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Data:{}
     }
   }
   componentDidMount() {
@@ -62,7 +63,7 @@ export default class QuestionsPieChart extends Component {
               callbacks: {
               label: function(tootipItem, data) {
                 const dataItem = data.datasets[tootipItem.datasetIndex].data[tootipItem.index] || '';
-                return `${dataItem} %`;
+                return `${Math.round(dataItem)} %`;
               }
             } 
             },
