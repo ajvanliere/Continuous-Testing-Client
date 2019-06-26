@@ -51,7 +51,7 @@ class StudentsChart extends Component {
   componentDidMount() {
     this.getStudentsData()
     //makes another request to the server every 30 seconds
-    setInterval(this.getStudentsData, 30000)
+    setInterval(this.getStudentsData, 10000)
    }
     render()
     {
