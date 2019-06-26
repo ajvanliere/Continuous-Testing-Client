@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
-import axios from 'axios'
+import axios from 'axios';
 
 
 class StudentsChart extends Component {
@@ -14,9 +14,9 @@ class StudentsChart extends Component {
   componentDidMount() {
      axios.get(`http://localhost:4000/evaluations-by-student`)
        .then(res => {
-         console.log('res', res)
+         // console.log('res', res)
          const evaluations = res.data.passedPerStudent;
-         console.log('evaluations:', evaluations)
+         // console.log('evaluations:', evaluations)
          let studentName = [];        
          let questionsPassed = [];
          evaluations.map(element => {
@@ -50,6 +50,8 @@ class StudentsChart extends Component {
           <div>
              <Bar  
              data = {this.state.Data}
+             width = {500}
+             height = {500}
              options = {{
                 title: {
                   display: true,

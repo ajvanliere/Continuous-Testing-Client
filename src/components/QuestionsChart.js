@@ -14,9 +14,9 @@ export default class QuestionsChart extends Component
   componentDidMount() {
     axios.get(`http://localhost:4000/evaluations-by-question`)
       .then(res => {
-        console.log('res', res)
+        // console.log('res', res)
         const evaluations = res.data.passedPerQuestion;
-        console.log('evaluations:', evaluations)
+        // console.log('evaluations:', evaluations)
         let questionKey = [];        
         let studentsPassed = [];
         evaluations.map(element => {
@@ -50,6 +50,8 @@ export default class QuestionsChart extends Component
          <div>
             <HorizontalBar  
             data = {this.state.Data}
+            width = {500}
+            height = {500}
             options = {{
                title: {
                  display: true,
