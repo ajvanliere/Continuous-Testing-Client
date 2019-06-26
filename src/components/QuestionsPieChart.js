@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 
+
 export default class QuestionsPieChart extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ export default class QuestionsPieChart extends Component {
       
       this.setState({
         Data: {
-          labels: ['Questions Passed', 'Questions failed'],
+          labels: ['Questions Passed', 'Questions Failed' ],
           datasets: [
             {
               data: [ pctQuestionsPassed, pctQuestionsFailed],
@@ -56,6 +57,11 @@ export default class QuestionsPieChart extends Component {
           height={350}
           width={350}
           options={{
+            plugins: {
+              labels: {
+                render: () => {}
+              }
+            },
             title: {
               display: true,
               text: ['% of questions', 'passed by students'],

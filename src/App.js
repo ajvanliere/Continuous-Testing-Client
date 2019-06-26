@@ -16,7 +16,11 @@ class App extends Component {
     return (
       <Provider store={store}>
       <div className="App">
+        <br/>
+        <br/>
         <h1>Student's Progress</h1>
+        <br/>
+        <br/>
         <div className="Charts">
         <div className='question'>
           <QuestionsChart />

@@ -58,6 +58,7 @@ class StudentsStackedChart extends Component {
           width={500}
           height={500}
           options={{
+            plugins: false,
             title: {
               display: true,
               text: ['No. of passed and failed', 'questions by student'],
