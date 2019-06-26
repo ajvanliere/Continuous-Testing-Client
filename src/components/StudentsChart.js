@@ -19,7 +19,6 @@ class StudentsChart extends Component {
          const evaluations = res.data.passedPerStudent;
          // console.log('evaluations:', evaluations)
          // console.log('students response', res)
-         const evaluations = res.data.passedPerStudent;
          // console.log('students evaluations:', evaluations)
          let studentName = [];        
          let questionsPassed = [];
