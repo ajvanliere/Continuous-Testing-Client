@@ -36,7 +36,7 @@ class StudentsChart extends Component {
                   'rgba(77, 228, 205, 0.6)',
                   'rgba(90,178,255,0.6)',
                   'rgba(240,134,67,0.6)',
-                  'rgba(228, 77, 77, 0.6)'
+                  'rgba(213, 50, 80, 0.6)'
                ]
               }
             ]
