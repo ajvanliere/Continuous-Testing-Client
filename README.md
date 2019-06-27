@@ -5,6 +5,8 @@ This is a group project to aggregate student test results in real time. This is 
 
 This app shows student progress in data transformation exercises in real time. It compiles the latest submission by each student for each question she/he attempted using Jest tests in their local computers. Test results are sent to a database by a server. This is the front end, where the client pulls and displays data.
 
+![](Live-updates.mp4)
+
 Four charts are available: 
 
 ### `number of students passing each question`
@@ -45,3 +47,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+## contributors
+This continuous testing project was developed by 
+- [Andrea Van Liere](https://github.com/ajvanliere)
+- [Keren Kinberg](https://github.com/kerenki)
+- [Rafael Olivares](https://github.com/rafaelrolivares)
+
+As three graduates of the Codaisseur Academy in Amsterdam we developed this tool with the help of Rein op ‘t Land and Kelley van Evert -  teachers and developers at Codaisseur. 
