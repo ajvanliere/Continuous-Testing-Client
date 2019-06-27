@@ -49,4 +49,6 @@ Shows, for all questions submitted by all students, what is the percentage of pa
 
 Shows, for every student, how many questions she/he had a passing result, and how many are being attempted but not passing.
 
+### `installation`
 
+To install this app, run git clone and npm install.
