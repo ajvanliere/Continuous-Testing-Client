@@ -30,11 +30,13 @@ Shows, for every student, how many questions she/he had a passing result, and ho
 
 ### `installation`
 
-To install and run this app:<br/>
-$ git clone git@github.com:ajvanliere/Continuous-Testing-Client.git<br/>
-$ cd Continuous-Testing-Client<br/>
-$ npm install<br/>
+To install and run this app:
+```
+$ git clone git@github.com:ajvanliere/Continuous-Testing-Client.git
+$ cd Continuous-Testing-Client
+$ npm install
 $ npm start
+```
 
 ### `npm start`
 
