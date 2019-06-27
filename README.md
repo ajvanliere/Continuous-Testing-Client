@@ -1,7 +1,7 @@
 
 ### `continuous student testing`
 
-This is a group project to aggregate student test results in real time. This is the clinet side, based on React.
+This is a group project to aggregate student test results in real time. This is the client side, based on React.
 
 This app shows student progress in data transformation exercises in real time. It compiles the latest submission by each student for each question she/he attempted using Jest tests in their local computers. Test results are sent to a database by a server. This is the front end, where the client pulls and displays data.
 
