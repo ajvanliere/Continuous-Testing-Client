@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
+//Importing the baseUrl
+import setting from '../settings'
+
+const { baseUrl } = setting
+
 
 
 export default class QuestionsPieChart extends Component {
@@ -12,7 +17,7 @@ export default class QuestionsPieChart extends Component {
   }
 
   getQuestionsStudantsData = () => {
-    axios.get(`http://localhost:4000/evaluations-by-question-student`)
+    axios.get(`${baseUrl}/evaluations-by-question-student`)
     .then(res => {
       let questions = res.data.questions
       let students = res.data.students

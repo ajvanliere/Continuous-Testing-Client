@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 import axios from 'axios';
+//Importing the baseUrl
+import setting from '../settings'
+
+const { baseUrl } = setting
 
 export default class QuestionsChart extends Component {
   constructor(props) {
@@ -11,7 +15,7 @@ export default class QuestionsChart extends Component {
   }
 
   getQuestionsData = () => {
-     return axios.get(`http://localhost:4000/evaluations-by-question`)
+     return axios.get(`${baseUrl}/evaluations-by-question`)
      .then(res => {
       // console.log('questions response', res)
        const evaluations = res.data.passedPerQuestion;

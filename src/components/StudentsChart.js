@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
+//Importing the baseUrl
+import setting from '../settings'
+
+const { baseUrl } = setting
+
 
 
 class StudentsChart extends Component {
@@ -13,7 +18,7 @@ class StudentsChart extends Component {
   }
 
   getStudentsData = () => {
-    return axios.get(`http://localhost:4000/evaluations-by-student`)
+    return axios.get(`${baseUrl}/evaluations-by-student`)
       .then(res => {
         const evaluations = res.data.passedPerStudent;
         let studentName = [];
