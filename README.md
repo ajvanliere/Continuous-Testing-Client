@@ -52,3 +52,11 @@ Shows, for every student, how many questions she/he had a passing result, and ho
 ### `installation`
 
 To install this app, run git clone and npm install.
+
+### `server`
+
+The server side of this project is available [here](https://github.com/rafaelrolivares/continuous-student-testing-server)
+
+### `tests`
+
+The exercises and jest tests are available [here](https://github.com/kerenKi/dataTransFormationExercises)
