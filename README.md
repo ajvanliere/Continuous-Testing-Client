@@ -27,42 +27,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `continuous student testing`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This app shows student progress in data transformation exercises in real time. It compiles the latest submission by each student for each question she/he attempted using Jest tests in their local computers. Test results are sent to a database by a server. This is where this app collects its information.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Four charts are available: 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `number of students passing each question`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Shows how many students had a passing result for each of the question. When you hover over each bar, a tooltip will show a short description of the question.
 
-## Learn More
+### `number of passed questions by student`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Shows, for every student, how many questions she/he had a passing result.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `% of questions passed by students`
 
-### Code Splitting
+Shows, for all questions submitted by all students, what is the percentage of passing and failed.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### `number of passed and failed questions by student`
 
-### Analyzing the Bundle Size
+Shows, for every student, how many questions she/he had a passing result, and how many are being attempted but not passing.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
